@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>photorithm</groupId>
+  <artifactId>google-webrtc</artifactId>
+  <versioning>
+    <release>v2</release>
+    <versions>
+      <version>v2</version>
+    </versions>
+    <lastUpdated>20200708000745</lastUpdated>
+  </versioning>
+</metadata>
