@@ -1,7 +1,9 @@
 cd ../depot_tools
 export PATH=$PATH:$(pwd)
 cd ../google_webrtc_android
-./tools_webrtc/android/build_aar.py
+echo "building aar file... please wait"
+script_output=$(/tools_webrtc/android/build_aar.py 2>&1)
+echo $script_output
 cd ../
 echo "removing old build"
 rm ./google_webrtc_android/google-webrtc-v2.aar
