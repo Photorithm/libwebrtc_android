@@ -1,5 +1,8 @@
-libwebrtc_android
+This repository contains the Maven repo link for our custom Android WebRTC build, as well as setup and build scripts for modifying that repository.
+All scripts only work on Linux (WSL is your friend on Windows, Mac users can suffer if they have issues)
 
-Use the following to generate the maven files:
+run `setup.sh` to download the necessary tools from google, as well as our custom fork of Google's WebRTC, in the parent directory of this folder
+make any changes desired to our custom webrtc repo
+run `build.sh` to build the webrtc code to an `.aar` file, generate the maven files, and write the results to this repository for distribution
 
-mvn install:install-file -DgroupId=com.aar.app -DartifactId=google-webrtc -Dversion=v2 -Dfile=/Users/photorithm/development/libwebrtc_android/com/aar/app/google-webrtc/v2/google-webrtc-v2.aar -Dpackaging=aar -DgeneratePom=true -DlocalRepository=/Users/photorithm/development/libwebrtc_android/com/aar/app/google-webrtc/v2 -DcreateChecksum=true
+
