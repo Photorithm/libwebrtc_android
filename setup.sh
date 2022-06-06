@@ -3,7 +3,7 @@ cd ..
 echo "cloning modified webrtc repository"
 git clone https://github.com/Photorithm/google_webrtc_android.git tmp
 cd tmp 
-git remote add upstream https://webrtc.googlesource.com/src
+git remote add upstream https://github.com/webrtc-sdk/webrtc
 cd ..
 if [ ! -d "./depot_tools" ]
 then
