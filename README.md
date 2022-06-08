@@ -2,11 +2,12 @@ This repository contains the Maven repo link for our custom Android WebRTC build
 All scripts only work on Linux (WSL is your friend on Windows, Mac users can suffer if they have issues)
 
 Ensure `git` is installed and configured.
-Ensure both OpenJDK and Maven are installed beforehand.
+Ensure OpenJDK, Maven, and python are installed beforehand.
 
 It is recommended to clone this repository inside an empty folder, as the setup and build scripts create folders in the directory above this repo on the local system.
 
 Run `setup.sh` from inside __this__ directory -- it will to download the necessary tools from google, as well as our custom fork of Google's WebRTC, in the parent directory of this folder.
+The script takes an optional parameter of which branch to switch to; usage is detailed in the script itself.
 
 Make any changes desired to our custom webrtc repo, which will be located at `../google_webrtc_android/src`
 
