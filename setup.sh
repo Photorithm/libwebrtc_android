@@ -22,7 +22,7 @@ then
     git clone https://github.com/Photorithm/google_webrtc_android.git 
     cd ./google_webrtc_android
     git remote add upstream https://github.com/webrtc-sdk/webrtc
-
+    git config checkout.defaultRemote origin
 else 
     echo "cloned source already exists; switching to branch ${BRANCH}"
     cd ./google_webrtc_android
