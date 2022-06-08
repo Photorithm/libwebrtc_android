@@ -1,39 +1,32 @@
-cd ..
-[ -d "./tmp" ] && rm -r ./tmp
-echo "cloning modified webrtc repository"
-git clone https://github.com/Photorithm/google_webrtc_android.git tmp
-cd tmp 
-git remote add upstream https://github.com/webrtc-sdk/webrtc
+# usage: ./setup.sh (OPT)SRC_BRANCH_NAME
+# example (origin): ./setup.sh fix/something
+# example (upstream): ./setup.sh "-b main upstream/main"
+MASTER="main"
+BRANCH="${1:-$MASTER}"
+
 cd ..
 if [ ! -d "./depot_tools" ]
 then
     echo "cloning depot tools repository"
     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 else 
-    echo "depot tools already exist; skipping clone"
+    echo "depot tools already exists; skipping clone"
 fi
 cd ./depot_tools
 export PATH=$PATH:$(pwd)
 cd ..
 if [ ! -d "./google_webrtc_android" ]
 then
-    mkdir ./google_webrtc_android 
+    # export GIT_DISCOVERY_ACROSS_FILESYSTEM=1 #helps with issues running in wsl
+    echo "cloning modified webrtc repository with branch ${BRANCH}"
+    git clone https://github.com/Photorithm/google_webrtc_android.git 
     cd ./google_webrtc_android
-    echo "fetching webrtc_android from google; this may take multiple hours"
-    fetch --nohooks webrtc_android
-    echo "syncing gclient"
-    gclient sync
-    cd ./src
+    git remote add upstream https://github.com/webrtc-sdk/webrtc
+
 else 
-    echo "project exists; skipping fetch"
-    cd ./google_webrtc_android/src
+    echo "cloned source already exists; switching to branch ${BRANCH}"
+    cd ./google_webrtc_android
 fi
-echo "installing build dependencies"
-./build/install-build-deps.sh
-rm -r .git
-echo "copying necessary files; this may take several minutes"
-shopt -s dotglob nullglob
-cp -r ../../tmp/* .
-echo "cleaning up temporary files; this may take several minutes"
-rm -r ../../tmp
+git fetch upstream
+git checkout $BRANCH
 echo "finished setup"
