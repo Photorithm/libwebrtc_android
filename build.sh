@@ -1,6 +1,6 @@
-cd ../google_webrtc_android/depot_tools
+cd ../depot_tools
 export PATH=$PATH:$(pwd)
-cd ../src
+cd ../google_webrtc_android/src
 echo "building aar file... please wait"
 vpython ./tools_webrtc/android/build_aar.py --verbose
 cd ../..
